@@ -4,6 +4,10 @@ import com.microservices.microservices.constants.AccountsConstants;
 import com.microservices.microservices.dto.CustomerDto;
 import com.microservices.microservices.dto.ResponseDto;
 import com.microservices.microservices.service.IAccountsService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -15,6 +19,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(
+        name = "CRUD Rest APIS for Accounts",
+        description = "CRUD Operations"
+)
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
@@ -24,6 +32,22 @@ public class AccountsController {
 
     private IAccountsService accountsService;
 
+
+    @Operation(
+            summary = "Create Account REST API"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "201",
+                    description =  "HTTP Status Created"
+            )
+            ,
+            @ApiResponse(
+                    responseCode = "500",
+                    description =  "Internal Server Error"
+            )
+    }
+    )
 
 @PostMapping("/create")
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {

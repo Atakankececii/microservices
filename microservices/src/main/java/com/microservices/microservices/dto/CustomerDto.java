@@ -1,10 +1,19 @@
 package com.microservices.microservices.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
+@Schema(
+        name = "Customer",
+        description =  "Schema to hold Customer and Account information"
+)
 public class CustomerDto {
+
+     @Schema(
+             description =  "Name of the customer"
+     )
 
      @NotEmpty(message = "Name can not be null or empty")
      @Size(min=5, max = 50 , message = "Th length of the customer name should be between 5 and 30 characters.")
