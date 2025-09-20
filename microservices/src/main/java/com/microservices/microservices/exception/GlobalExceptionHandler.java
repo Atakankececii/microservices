@@ -27,7 +27,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                                                                     HttpHeaders httpHeaders, HttpStatusCode status,
                                                                     WebRequest request) {
 
-        Map<String,String> validationErrors = new HashMap<>();
+        Map<String,String>  validationErrors = new HashMap<>();
         List<ObjectError> validationErrorList = ex.getBindingResult().getAllErrors();
 
         validationErrorList.forEach(error -> {
