@@ -29,10 +29,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 				url="localhost:8080"
 		)
 )
-public class AccountsApplication {
 
+
+public class AccountsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AccountsApplication.class, args);
 	}
-
 }
